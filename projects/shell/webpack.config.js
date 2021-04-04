@@ -1,12 +1,5 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
-
-const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, '../../tsconfig.json'), [
-    '@namespace/auth',
-  ]);
 
 module.exports = {
   output: {
@@ -22,10 +15,11 @@ module.exports = {
           "@angular/core": { singleton: true, strictVersion: true },
           "@angular/common": { singleton: true, strictVersion: true },
           "@angular/router": { singleton: true, strictVersion: true },
-          ...sharedMappings.getDescriptors()
+          "@namespace/auth": { 
+            import: path.resolve(__dirname, '../../', 'projects/auth/src/public-api'),
+            strictVersion: true, 
+           },
         }
-
     }),
-    sharedMappings.getPlugin(),
   ],
 };
