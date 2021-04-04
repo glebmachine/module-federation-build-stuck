@@ -16,8 +16,8 @@
       "dom"
     ],
     "paths": {
-      "@namespace/payments": ["projects/payments/src/public-api.ts"],
-      "@namespace/auth": ["projects/auth/src/public-api.ts"]
+      "@namespace/payments": ["projects/payments/src/public-api"],
+      "@namespace/auth": ["projects/auth/src/public-api"]
     }
   }
 }
